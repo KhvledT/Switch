@@ -6,21 +6,46 @@ export async function GET(req: Request) {
 
   if (!domain) {
     return NextResponse.json(
-      { error: "domain is required" },
+      { error: "Domain is required" },
       { status: 400 }
     );
   }
 
-  const response = await fetch(
-    `https://api.godaddy.com/v1/domains/available?domain=${domain}`,
-    {
+  try {
+    const res = await fetch(`https://rdap.org/domain/${domain}`, {
       method: "GET",
       headers: {
-        Authorization: `sso-key ${process.env.GODADDY_API_KEY}:${process.env.GODADDY_API_SECRET}`,
+        Accept: "application/json",
       },
-    }
-  );
+    });
 
-  const data = await response.json();
-  return NextResponse.json(data);
+    // 404 = domain not found = AVAILABLE
+    if (res.status === 404) {
+      return NextResponse.json({
+        domain,
+        available: true,
+        status: "AVAILABLE",
+      });
+    }
+
+    // 200 = domain exists = TAKEN
+    if (res.ok) {
+      return NextResponse.json({
+        domain,
+        available: false,
+        status: "TAKEN",
+      });
+    }
+
+    // أي حالة تانية
+    return NextResponse.json(
+      { error: "Unexpected RDAP response" },
+      { status: res.status }
+    );
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to reach RDAP service" },
+      { status: 500 }
+    );
+  }
 }

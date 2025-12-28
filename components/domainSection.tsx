@@ -20,12 +20,16 @@ export default function domainSection() {
     setLoading(true);
     setError("");
     setResult(null);
+    if (!domain.includes('.')) {
+        setError("Invalid domain format please include a TLD (e.g., .com)");
+        setLoading(false);
+        return;
+    }
 
     try {
         const res = await fetch(`/api/domain-check?domain=${domain}`);
         
         const data = await res.json();
-        console.log(data);
 
         if (!res.ok) {
         throw new Error(data.error || "Request failed");
