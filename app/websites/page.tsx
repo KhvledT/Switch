@@ -3,6 +3,7 @@
 import { useI18n } from "@/components/i18n-context"
 import { Button } from "@/components/ui/button"
 import { Layers, Monitor, Phone, Tablet } from "lucide-react"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 
 export default function WebsitesPage() {
@@ -86,7 +87,9 @@ export default function WebsitesPage() {
               >
                 {/* Preview */}
                 <div className="aspect-video relative overflow-hidden border bg-muted group-hover:border-foreground transition-colors">
-                  <img
+                  <Image
+                    width={600}
+                    height={400}
                     src={`https://image.thum.io/get/width/1200/${project.url}`}
                     alt={project.title}
                     className="absolute inset-0 w-full h-full object-cover"
