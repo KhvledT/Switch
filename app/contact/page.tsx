@@ -9,6 +9,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useState } from "react"
 import { CheckCircle2, Mail, MapPin, Phone } from "lucide-react"
+import Image from "next/image"
+import SwitchLogo from "@/assets/imgs/about.jpeg"
 
 export default function ContactPage() {
   const { t } = useI18n()
@@ -20,7 +22,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pt-15">
       {/* Header Section */}
       <section className="border-b py-20 bg-muted/20">
         <div className="container mx-auto px-4">
@@ -76,7 +78,13 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="aspect-video bg-muted border grid-pattern" />
+              <Image
+                src={SwitchLogo}
+                alt="About SWITCH"
+                className="rounded-md border border-background/20 shadow-lg w-full max-w-lg h-auto"
+                priority={false}
+              />
+
             </div>
 
             {/* Contact Form */}

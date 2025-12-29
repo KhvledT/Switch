@@ -5,27 +5,13 @@ import Beams from "@/components/reactBits/Beams";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Megaphone, Bot } from "lucide-react";
 import Link from "next/link";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import Image from "next/image";
-import about from "@/assets/imgs/about.jpeg";
+import SwitchLogo from "@/assets/imgs/about.jpeg"
 import DomainSection from "@/components/domainSection";
 
 function HomeContent() {
   const { t } = useI18n();
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  useEffect(() => {
-    let timeout: any;
-
-    const onScroll = () => {
-      setIsScrolling(true);
-      clearTimeout(timeout);
-      timeout = setTimeout(() => setIsScrolling(false), 120);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
     <div className="flex flex-col">
@@ -43,7 +29,7 @@ function HomeContent() {
             beamHeight={15}
             beamNumber={12}
             lightColor="#ffffff"
-            speed={isScrolling ? 0.1 : 0.8}
+            speed={2}
             noiseIntensity={0.1}
             scale={0.2}
             rotation={200}
@@ -53,16 +39,16 @@ function HomeContent() {
         <div className="absolute inset-0 bg-black pointer-events-none" />
 
         <div className="container relative z-10 mx-auto max-w-4xl">
-          <h1 className="mb-6 text-4xl font-black tracking-tighter sm:text-6xl md:text-7xl uppercase">
+          <h1 className="mb-6 text-4xl font-black text-white tracking-tighter sm:text-6xl md:text-7xl uppercase text-center">
             {t("hero_title")}
           </h1>
 
-          <p className="mx-auto mb-10 max-w-2xl text-base sm:text-lg text-muted-foreground">
+          <p className="mx-auto mb-10 max-w-2xl text-base sm:text-lg text-white/70 leading-relaxed text-center">
             {t("hero_desc")}
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="h-14 px-10 text-lg font-bold">
+            <Button size="lg" className="h-14 px-10 text-lg font-bold bg-white text-black hover:bg-gray-200 cursor-pointer">
               {t("get_started")} <ArrowRight className="ml-2 h-5 w-4" />
             </Button>
 
@@ -70,7 +56,7 @@ function HomeContent() {
               <Button
                 variant="outline"
                 size="lg"
-                className="h-14 px-10 text-lg font-bold bg-transparent"
+                className="h-14 px-10 text-lg font-bold bg-transparent border-white dark:border-white text-white cursor-pointer" 
               >
                 View Portfolio
               </Button>
@@ -106,7 +92,7 @@ function HomeContent() {
             </div>
 
             <Image
-              src={about}
+              src={SwitchLogo}
               alt="About SWITCH"
               className="rounded-md border border-background/20 shadow-lg w-full h-auto"
               priority={false}
