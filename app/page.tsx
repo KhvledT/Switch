@@ -43,7 +43,7 @@ function HomeContent() {
             beamHeight={15}
             beamNumber={12}
             lightColor="#ffffff"
-            speed={isScrolling ? 0.2 : 1}
+            speed={isScrolling ? 0.1 : 0.8}
             noiseIntensity={0.1}
             scale={0.2}
             rotation={200}
@@ -164,23 +164,137 @@ function HomeContent() {
           </div>
         </div>
       </section>
+      {/* ================= Why Choose Switch ================= */}
+<section className="py-20 md:py-24 border-t border-border">
+  <div className="container mx-auto px-4">
+    <div className="mb-14 max-w-3xl">
+      <p className="mb-4 text-xs font-black uppercase tracking-widest text-muted-foreground">
+        Why SWITCH
+      </p>
+      <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter uppercase">
+        Built to perform. Designed to convert.
+      </h2>
+    </div>
 
-      {/* ================= CTA ================= */}
-      <section className="py-24 md:py-32 text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter uppercase">
-            Ready to build something bold?
-          </h2>
-
-          <p className="mx-auto mb-12 max-w-2xl text-base sm:text-lg text-muted-foreground">
-            Let’s turn your idea into a high-performance digital product.
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        { title: "Performance First", desc: "Optimized for speed, SEO, and real users." },
+        { title: "Modern Stack", desc: "Next.js, scalable architecture, clean code." },
+        { title: "Business Focused", desc: "Design decisions driven by conversions." },
+        { title: "Future Proof", desc: "Built to grow with your business." },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="border border-border p-8 transition-all hover:bg-foreground hover:text-background"
+        >
+          <h3 className="mb-4 text-xl font-black tracking-tighter uppercase">
+            {item.title}
+          </h3>
+          <p className="text-muted-foreground group-hover:text-background/70">
+            {item.desc}
           </p>
-
-          <Button size="lg" className="h-16 px-12 text-lg font-black uppercase">
-            Start Your Project <ArrowRight className="ml-3 h-5 w-5" />
-          </Button>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* ================= Process ================= */}
+<section className="py-20 md:py-24 bg-foreground text-background">
+  <div className="container mx-auto px-4">
+    <div className="mb-16 max-w-3xl">
+      <p className="mb-4 text-xs font-black uppercase tracking-widest text-background/60">
+        Our Process
+      </p>
+      <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter uppercase">
+        From idea to impact.
+      </h2>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+      {[
+        { step: "01", title: "Discover", desc: "Understand goals and users." },
+        { step: "02", title: "Design", desc: "Bold UI with clear UX." },
+        { step: "03", title: "Build", desc: "Scalable, high-performance code." },
+        { step: "04", title: "Launch", desc: "Deploy, test, and optimize." },
+      ].map((item, i) => (
+        <div key={i}>
+          <span className="text-sm font-black text-background/60">
+            {item.step}
+          </span>
+          <h3 className="mt-3 mb-4 text-xl font-black tracking-tighter uppercase">
+            {item.title}
+          </h3>
+          <p className="text-background/70">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* ================= Stats ================= */}
+<section className="py-20 md:py-24 border-t border-border">
+  <div className="container mx-auto px-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+      {[
+        { value: "50+", label: "Projects Delivered" },
+        { value: "98%", label: "Client Satisfaction" },
+        { value: "3x", label: "Performance Boost" },
+        { value: "24/7", label: "Support & Monitoring" },
+      ].map((item, i) => (
+        <div key={i}>
+          <h3 className="text-4xl md:text-5xl font-black">
+            {item.value}
+          </h3>
+          <p className="mt-2 text-sm uppercase tracking-widest text-muted-foreground">
+            {item.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* ================= Tech Stack ================= */}
+<section className="py-20 md:py-24">
+  <div className="container mx-auto px-4">
+    <div className="mb-14 max-w-3xl">
+      <p className="mb-4 text-xs font-black uppercase tracking-widest text-muted-foreground">
+        Technology
+      </p>
+      <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter uppercase">
+        Built with modern tools.
+      </h2>
+    </div>
+
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+      {["Next.js", "React", "Node.js", "Tailwind", "Three.js"].map((tech, i) => (
+        <div
+          key={i}
+          className="border border-border p-4 text-center font-bold uppercase"
+        >
+          {tech}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* ================= Final CTA ================= */}
+<section className="py-28 md:py-36 text-center bg-foreground text-background">
+  <div className="container mx-auto px-4">
+    <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter uppercase">
+      Let’s build something powerful.
+    </h2>
+    <p className="mx-auto mb-12 max-w-2xl text-base sm:text-lg text-background/70">
+      Tell us about your project and we’ll turn it into a high-performance digital experience.
+    </p>
+    <Button size="lg" className="h-16 px-14 text-lg font-black uppercase">
+      Start Your Project <ArrowRight className="ml-3 h-5 w-5" />
+    </Button>
+  </div>
+</section>
+
     </div>
   );
 }
