@@ -49,16 +49,16 @@ function HomeContent() {
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" className="h-14 px-10 text-lg font-bold bg-white text-black hover:bg-gray-200 cursor-pointer">
-              {t("get_started")} <ArrowRight className="ml-2 h-5 w-4" />
+              {t("get_websites")} <ArrowRight className="ml-2 h-5 w-4" />
             </Button>
 
             <Link href="/websites">
               <Button
                 variant="outline"
                 size="lg"
-                className="h-14 px-10 text-lg font-bold bg-transparent border-white dark:border-white text-white cursor-pointer" 
+                className="h-14 px-10 text-lg font-bold bg-transparent border-white dark:border-white text-white dark:hover:bg-white dark:hover:text-black cursor-pointer" 
               >
-                View Portfolio
+                {t("get_marketing")}
               </Button>
             </Link>
           </div>
