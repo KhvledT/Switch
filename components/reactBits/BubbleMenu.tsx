@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import Link from "next/link";
 
 type MenuItem = {
   label: string;
@@ -32,38 +33,38 @@ export type BubbleMenuProps = {
 const DEFAULT_ITEMS: MenuItem[] = [
   {
     label: "home",
-    href: "#",
+    href: "/",
     ariaLabel: "Home",
     rotation: -8,
-    hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
+    hoverStyles: { bgColor: "#3A3A3A", textColor: "#ffffff" },
   },
   {
     label: "Websites",
-    href: "#",
+    href: "/websites",
     ariaLabel: "Websites",
     rotation: 8,
-    hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
+    hoverStyles: { bgColor: "#3A3A3A", textColor: "#ffffff" },
   },
   {
     label: "Marketing",
-    href: "#",
+    href: "/marketing",
     ariaLabel: "Marketing",
     rotation: 8,
-    hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
+    hoverStyles: { bgColor: "#3A3A3A", textColor: "#ffffff" },
   },
   {
     label: "AI Automation",
-    href: "#",
+    href: "/ai-automation",
     ariaLabel: "AI Automation",
     rotation: 8,
-    hoverStyles: { bgColor: "#ef4444", textColor: "#ffffff" },
+    hoverStyles: { bgColor: "#3A3A3A", textColor: "#ffffff" },
   },
   {
     label: "Contact",
-    href: "#",
+    href: "/contact",
     ariaLabel: "Contact",
     rotation: -8,
-    hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+    hoverStyles: { bgColor: "#3A3A3A", textColor: "#ffffff" },
   },
 ];
 
@@ -321,7 +322,11 @@ export default function BubbleMenu({
                   "box-border",
                 ].join(" ")}
               >
-                <a
+                <Link
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setbgBlur(false);
+                }}
                   role="menuitem"
                   href={item.href}
                   aria-label={item.ariaLabel || item.label}
@@ -372,7 +377,7 @@ export default function BubbleMenu({
                   >
                     {item.label}
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
