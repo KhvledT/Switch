@@ -66,6 +66,13 @@ const DEFAULT_ITEMS: MenuItem[] = [
     rotation: -8,
     hoverStyles: { bgColor: "#3A3A3A", textColor: "#ffffff" },
   },
+  {
+    label: "About Us",
+    href: "/aboutus",
+    ariaLabel: "About Us",
+    rotation: -8,
+    hoverStyles: { bgColor: "#3A3A3A", textColor: "#ffffff" },
+  },
 ];
 
 export default function BubbleMenu({
@@ -95,9 +102,9 @@ export default function BubbleMenu({
     "bubble-menu",
     "inline-flex",
     "items-center",
-    "pointer-events-none", // parent non-interactive; children (button) will be interactive
+    "pointer-events-none",
     "z-[1001]",
-    "fixed top-20 right-10",
+    "fixed top-20 right-3",
     className,
   ]
     .filter(Boolean)
@@ -286,7 +293,6 @@ export default function BubbleMenu({
         <div
           ref={overlayRef}
           className={[
-            
             `fixed top-16 z-40 h-screen w-screen`,
             "bubble-menu-items",
             useFixedPosition ? "fixed" : "absolute",
@@ -305,8 +311,8 @@ export default function BubbleMenu({
               "list-none m-0 px-6",
               "w-full max-w-[1600px] mx-auto",
               "flex flex-wrap",
-              "gap-x-0 gap-y-1",
-              "pointer-events-auto",
+              "gap-x-0 gap-y-10",
+              "pointer-events-auto relative -top-[20%]",
             ].join(" ")}
             role="menu"
             aria-label="Menu links"
@@ -342,6 +348,7 @@ export default function BubbleMenu({
                     "transition-[background,color] duration-300 ease-in-out",
                     "box-border",
                     "whitespace-nowrap overflow-hidden",
+                    "text-1xl sm:text-3xl md:text-4xl lg:text-6xl",
                   ].join(" ")}
                   style={
                     {
@@ -352,9 +359,8 @@ export default function BubbleMenu({
                       ["--hover-color"]: item.hoverStyles?.textColor || menuContentColor,
                       background: "var(--pill-bg)",
                       color: "var(--pill-color)",
-                      minHeight: "6rem",
+                      minHeight: "3rem",
                       padding: "10px 20px",
-                      fontSize: 40,
                       fontWeight: 800,
                       lineHeight: 0,
                       willChange: "transform",

@@ -6,47 +6,100 @@ import { Layers, Monitor, Phone, Tablet } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
+// projects data
+import ArtistPortfolio from "@/assets/imgs/projects/ArtistPortfolio.jpg"
+import DoctorPortfolio from "@/assets/imgs/projects/DoctorPortfolio.jpg"
+import Electronics from "@/assets/imgs/projects/Electronics.jpg"
+import Everlane from "@/assets/imgs/projects/Everlane.jpg"
+import ForkFlame from "@/assets/imgs/projects/ForkFlame.jpg"
+import Furniture from "@/assets/imgs/projects/Furniture.jpg"
+import GeneralPortfolio from "@/assets/imgs/projects/GeneralPortfolio.jpg"
+import LawyerPortfolio from "@/assets/imgs/projects/LawyerPortfolio.jpg"
+import Pharmacy from "@/assets/imgs/projects/Pharmacy.jpg"
+import Recipes from "@/assets/imgs/projects/Recipes.jpg"
+import Techmart from "@/assets/imgs/projects/Techmart.jpg"
+import Watchit from "@/assets/imgs/projects/Watchit.jpg"
+
+
 export default function WebsitesPage() {
   const { t } = useI18n()
   const router = useRouter()
 
   const projects = [
-    {
-      title: "Alpha Everlane",
-      desc: "A sleek, modern e-commerce platform for sustainable fashion.",
-      url: "https://brand-e-commerce-two.vercel.app/",
-    },
-    {
-      title: "Pharmacy E-Commerce",
-      desc: "A user-friendly online store for pharmaceutical products.",
-      url: "https://pharmacy-e-commerce.vercel.app/",
-    },
-    {
-      title: "Furniture E-Commerce",
-      desc: "A modern online store for furniture and home decor.",
-      url: "https://furniture-e-commerce-sandy.vercel.app/",
-    },
-    {
-      title: "Electronics E-Commerce",
-      desc: "A cutting-edge platform for electronics and gadgets.",
-      url: "https://electronics-e-commerce-seven.vercel.app/",
-    },
-    {
-      title: "Artist Portfolio",
-      desc: "A modern portfolio website for an artist.",
-      url: "https://artist-portfolio-e.netlify.app/",
-    },
-    {
-      title: "Lawyer Portfolio",
-      desc: "A professional portfolio website for a lawyer.",
-      url: "http://lawyer-portfolio-e.netlify.app/",
-    },
-    {
-      title: "Doctor Portfolio",
-      desc: "A professional portfolio website for a doctor.",
-      url: "https://doctor-portfolio-e.netlify.app/",
-    },
-  ]
+  {
+    title: "Everlane",
+    desc: "A sleek, modern e-commerce platform for sustainable fashion.",
+    url: "https://brand-e-commerce-two.vercel.app/",
+    image: Everlane.src,
+  },
+  {
+    title: "Techmart",
+    desc: "A modern e-commerce website for a retail business.",
+    url: "https://e-commerce-ashy-two-19.vercel.app/",
+    image: Techmart.src,
+  },
+  {
+    title: "Pharmacy",
+    desc: "A user-friendly online store for pharmaceutical products.",
+    url: "https://pharmacy-e-commerce.vercel.app/",
+    image: Pharmacy.src,
+  },
+  {
+    title: "Furniture",
+    desc: "A modern online store for furniture and home decor.",
+    url: "https://furniture-e-commerce-sandy.vercel.app/",
+    image: Furniture.src,
+  },
+  {
+    title: "WatchIt",
+    desc: "A sleek movie review website for film enthusiasts.",
+    url: "https://watchit-e.netlify.app/",
+    image: Watchit.src,
+  },
+  {
+    title: "Restaurant",
+    desc: "A modern website for a restaurant business.",
+    url: "https://fork-flame-e.netlify.app/",
+    image: ForkFlame.src,
+  },
+  {
+    title: "Recipes",
+    desc: "A clean and user-friendly website for sharing recipes.",
+    url: "https://recipes-app-e.netlify.app/",
+    image: Recipes.src,
+  },
+  {
+    title: "Artist Portfolio",
+    desc: "A modern portfolio website for an artist.",
+    url: "https://artist-portfolio-e.netlify.app/",
+    image: ArtistPortfolio.src,
+  },
+  {
+    title: "Lawyer Portfolio",
+    desc: "A professional portfolio website for a lawyer.",
+    url: "http://lawyer-portfolio-e.netlify.app/",
+    image: LawyerPortfolio,
+  },
+  {
+    title: "Doctor Portfolio",
+    desc: "A professional portfolio website for a doctor.",
+    url: "https://doctor-portfolio-e.netlify.app/",
+    image: DoctorPortfolio.src,
+  },
+  {
+    title: "General Portfolio",
+    desc: "A versatile portfolio website suitable for various professions.",
+    url: "https://general-portfolio-e.netlify.app//",
+    image: GeneralPortfolio.src,
+  },
+  {
+    title: "Electronics",
+    desc: "A cutting-edge platform for electronics and gadgets.",
+    url: "https://electronics-e-commerce-seven.vercel.app/",
+    image: Electronics.src,
+  },
+]
+
 
   const templates = [
     { type: "Hero Section", name: "Blackout Hero" },
@@ -101,13 +154,14 @@ export default function WebsitesPage() {
                 {/* Preview */}
                 <div className="aspect-video relative overflow-hidden border bg-muted transition-colors group-hover:border-foreground">
                   <Image
-                    width={600}
-                    height={400}
-                    src={`https://image.thum.io/get/width/1200/${project.url}`}
+                    src={project.image}
                     alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="lazy"
+                    fill
+                    quality={75}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
                   />
+
 
                   {/* Devices */}
                   <div className="absolute top-4 right-4 flex gap-2">

@@ -49,7 +49,7 @@ function HomeContent() {
         <div className="absolute inset-0 bg-black pointer-events-none" />
 
         <div className="container relative z-10 mx-auto max-w-4xl">
-          <h1 className="mb-6 text-4xl font-black text-white tracking-tighter sm:text-6xl md:text-7xl uppercase text-center">
+          <h1 className="mb-6 text-4xl px-5 font-black text-white tracking-tighter sm:text-6xl md:text-7xl uppercase text-center">
             {t("hero_title")}
           </h1>
 
@@ -58,11 +58,13 @@ function HomeContent() {
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link href="/websites">
             <Button size="lg" className="h-14 px-10 text-lg font-bold bg-white text-black hover:bg-gray-200 cursor-pointer">
               {t("get_websites")} <ArrowRight className="ml-2 h-5 w-4" />
             </Button>
+            </Link>
 
-            <Link href="/websites">
+            <Link href="/marketing">
               <Button
                 variant="outline"
                 size="lg"
@@ -95,10 +97,11 @@ function HomeContent() {
                 We are a collective of designers, engineers, and strategists
                 dedicated to creating seamless digital experiences.
               </p>
-
-              <Button variant="outline" className="font-bold bg-transparent">
-                Learn More About Us
-              </Button>
+              <Link href="/aboutus">
+                <Button variant="outline" className="font-bold bg-transparent">
+                  Learn More About Us
+                </Button>
+              </Link>
             </div>
 
             <Image
@@ -292,9 +295,11 @@ function HomeContent() {
     <p className="mx-auto mb-12 max-w-2xl text-base sm:text-lg text-background/70">
       Tell us about your project and we’ll turn it into a high-performance digital experience.
     </p>
-    <Button size="lg" className="h-16 px-14 text-lg font-black uppercase">
-      Start Your Project <ArrowRight className="ml-3 h-5 w-5" />
-    </Button>
+    <Link href="/contact">
+      <Button size="lg" className="h-16 px-14 text-lg font-black uppercase">
+        Start Your Project <ArrowRight className="ml-3 h-5 w-5" />
+      </Button>
+    </Link>
   </div>
 </section>
 
