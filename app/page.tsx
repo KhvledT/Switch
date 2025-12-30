@@ -9,9 +9,19 @@ import { Suspense } from "react";
 import Image from "next/image";
 import SwitchLogo from "@/assets/imgs/about.jpeg"
 import DomainSection from "@/components/domainSection";
+import CountUp from "@/components/reactBits/CountUp";
 
 function HomeContent() {
   const { t } = useI18n();
+
+  const stats = [
+    { number: 50, suffix: "+", label: "Projects Delivered" },
+    { number: 98, suffix: "%", label: "Client Satisfaction" },
+    { number: 3, suffix: "x", label: "Performance Boost" },
+    { number: 24, suffix: "/7", label: "Support & Monitoring" },
+  ]
+
+
 
   return (
     <div className="flex flex-col">
@@ -222,16 +232,19 @@ function HomeContent() {
 <section className="py-20 md:py-24 border-t border-border">
   <div className="container mx-auto px-4">
     <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-      {[
-        { value: "50+", label: "Projects Delivered" },
-        { value: "98%", label: "Client Satisfaction" },
-        { value: "3x", label: "Performance Boost" },
-        { value: "24/7", label: "Support & Monitoring" },
-      ].map((item, i) => (
+      {stats.map((item, i) => (
         <div key={i}>
           <h3 className="text-4xl md:text-5xl font-black">
-            {item.value}
+            <CountUp
+              from={0}
+              to={item.number}
+              duration={1.5}
+              startWhen={true}
+              className="count-up-text"
+            />
+            <span>{item.suffix}</span>
           </h3>
+
           <p className="mt-2 text-sm uppercase tracking-widest text-muted-foreground">
             {item.label}
           </p>
@@ -240,6 +253,10 @@ function HomeContent() {
     </div>
   </div>
 </section>
+
+
+
+
 
 {/* ================= Tech Stack ================= */}
 <section className="py-20 md:py-24">
@@ -254,7 +271,7 @@ function HomeContent() {
     </div>
 
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-      {["Next.js", "React", "Node.js", "Tailwind", "Three.js"].map((tech, i) => (
+      {["Next.js", "React", "Node.js", "Laravel", "SQL"].map((tech, i) => (
         <div
           key={i}
           className="border border-border p-4 text-center font-bold uppercase"
