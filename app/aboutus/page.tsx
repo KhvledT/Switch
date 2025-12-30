@@ -1,6 +1,3 @@
-"use client"
-
-import { useI18n } from "@/components/i18n-context"
 import { Button } from "@/components/ui/button"
 import {
   Zap,
@@ -13,7 +10,6 @@ import {
 import Link from "next/link"
 
 export default function AboutPage() {
-  const { t } = useI18n()
 
   return (
     <div className="flex flex-col pt-15">

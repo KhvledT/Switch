@@ -1,10 +1,5 @@
-"use client"
-
-import { useI18n } from "@/components/i18n-context"
 import { Button } from "@/components/ui/button"
-import { Layers, Monitor, Phone, Tablet } from "lucide-react"
-import Image from "next/image"
-import { useRouter } from "next/navigation"
+import { Layers } from "lucide-react"
 
 // projects data
 import ArtistPortfolio from "@/assets/imgs/projects/ArtistPortfolio.jpg"
@@ -19,11 +14,10 @@ import Pharmacy from "@/assets/imgs/projects/Pharmacy.jpg"
 import Recipes from "@/assets/imgs/projects/Recipes.jpg"
 import Techmart from "@/assets/imgs/projects/Techmart.jpg"
 import Watchit from "@/assets/imgs/projects/Watchit.jpg"
+import WebsiteCard from "@/components/pagesComponents/websitesPage/websiteCard"
 
 
 export default function WebsitesPage() {
-  const { t } = useI18n()
-  const router = useRouter()
 
   const projects = [
   {
@@ -78,7 +72,7 @@ export default function WebsitesPage() {
     title: "Lawyer Portfolio",
     desc: "A professional portfolio website for a lawyer.",
     url: "http://lawyer-portfolio-e.netlify.app/",
-    image: LawyerPortfolio,
+    image: LawyerPortfolio.src,
   },
   {
     title: "Doctor Portfolio",
@@ -110,9 +104,6 @@ export default function WebsitesPage() {
     { type: "Navigation", name: "Blur Nav" },
   ]
 
-  const navigateToPreview = (url: string) => {
-    router.push(`/webiframe?url=${encodeURIComponent(url)}`)
-  }
 
   return (
     <div className="flex flex-col pt-15">
@@ -146,55 +137,8 @@ export default function WebsitesPage() {
 
           <div className="grid grid-cols-1 gap-14 md:grid-cols-2">
             {projects.map((project, i) => (
-              <div
-                key={i}
-                onClick={() => navigateToPreview(project.url)}
-                className="group cursor-pointer space-y-4"
-              >
-                {/* Preview */}
-                <div className="aspect-video relative overflow-hidden border bg-muted transition-colors group-hover:border-foreground">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    quality={75}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-
-
-                  {/* Devices */}
-                  <div className="absolute top-4 right-4 flex gap-2">
-                    {[Monitor, Tablet, Phone].map((Icon, idx) => (
-                      <div key={idx} className="bg-background border p-1 rounded-sm">
-                        <Icon className="h-3 w-3" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Info */}
-                <div className="flex items-end justify-between gap-6">
-                  <div>
-                    <h3 className="text-2xl font-black tracking-tighter uppercase">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {project.desc}
-                    </p>
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    className="font-bold bg-transparent shrink-0"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      navigateToPreview(project.url)
-                    }}
-                  >
-                    Build Similar
-                  </Button>
-                </div>
+              <div key={i}>
+                <WebsiteCard project={project} />
               </div>
             ))}
           </div>

@@ -1,11 +1,7 @@
-"use client"
-
-import { useI18n } from "@/components/i18n-context"
 import { Button } from "@/components/ui/button"
 import { Bot, Cpu, BarChart3, ShieldCheck, Mail } from "lucide-react"
 
 export default function AIAutomationPage() {
-  const { t } = useI18n()
 
   const useCases = [
     {
@@ -37,7 +33,7 @@ export default function AIAutomationPage() {
       <section className="border-b py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-black tracking-tighter sm:text-7xl uppercase mb-4">
-            {t("ai_automation")}
+            Ai Automation
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl">
             Leverage autonomous agents and intelligent workflows to eliminate repetitive work and scale efficiently.

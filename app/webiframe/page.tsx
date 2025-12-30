@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -19,7 +18,7 @@ export default function WebIframePage() {
   const router = useRouter()
 
   const url = searchParams.get("url")
-  const decodedUrl = url ? decodeURIComponent(url) : null
+  const decodedUrl = url 
 
   const [device, setDevice] = useState<Device>("desktop")
   const [sidebarOpen, setSidebarOpen] = useState(false)

@@ -1,6 +1,4 @@
-"use client";
 
-import { useI18n } from "@/components/i18n-context";
 import Beams from "@/components/reactBits/Beams";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Megaphone, Bot } from "lucide-react";
@@ -12,7 +10,6 @@ import DomainSection from "@/components/domainSection";
 import CountUp from "@/components/reactBits/CountUp";
 
 function HomeContent() {
-  const { t } = useI18n();
 
   const stats = [
     { number: 50, suffix: "+", label: "Projects Delivered" },
@@ -50,17 +47,17 @@ function HomeContent() {
 
         <div className="container relative z-10 mx-auto max-w-4xl">
           <h1 className="mb-6 text-4xl px-5 font-black text-white tracking-tighter sm:text-6xl md:text-7xl uppercase text-center">
-            {t("hero_title")}
+            The Future of Digital Services
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl text-base sm:text-lg text-white/70 leading-relaxed text-center">
-            {t("hero_desc")}
+           Scale your business with our cutting-edge website design, marketing strategies, and AI automation solutions.
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/websites">
             <Button size="lg" className="h-14 px-10 text-lg font-bold bg-white text-black hover:bg-gray-200 cursor-pointer">
-              {t("get_websites")} <ArrowRight className="ml-2 h-5 w-4" />
+              Explore Websites <ArrowRight className="ml-2 h-5 w-4" />
             </Button>
             </Link>
 
@@ -70,7 +67,7 @@ function HomeContent() {
                 size="lg"
                 className="h-14 px-10 text-lg font-bold bg-transparent border-white dark:border-white text-white dark:hover:bg-white dark:hover:text-black cursor-pointer" 
               >
-                {t("get_marketing")}
+                Check Marketing Plans
               </Button>
             </Link>
           </div>
@@ -118,26 +115,26 @@ function HomeContent() {
       <section className="bg-foreground text-background py-20 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="mb-14 text-center text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter uppercase">
-            {t("services")}
+            Services
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 icon: <Zap className="h-9 w-9" />,
-                title: t("websites"),
+                title: "Websites",
                 desc: "Custom high-performance websites built for scale.",
                 link: "/websites",
               },
               {
                 icon: <Megaphone className="h-9 w-9" />,
-                title: t("marketing"),
+                title: "Marketing",
                 desc: "Data-driven marketing campaigns that convert.",
                 link: "/marketing",
               },
               {
                 icon: <Bot className="h-9 w-9" />,
-                title: t("ai_automation"),
+                title: "AI Automation",
                 desc: "Intelligent automation to streamline your workflow.",
                 link: "/ai-automation",
               },
