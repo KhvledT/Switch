@@ -8,10 +8,12 @@ import { ThemeProvider } from "next-themes"
 import { Footer } from "@/components/footer"
 import { Suspense } from "react" // added Suspense import
 import Navbar from "@/components/navbar"
-import BubbleMenu from "@/components/reactBits/BubbleMenu"
+import Sidebar from "@/components/pagesComponents/layoutPage/sidebar"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
+
+
 
 
 export const metadata: Metadata = {
@@ -31,14 +33,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <I18nProvider>
             <Navbar />
-            <div className="">
-              <BubbleMenu
-                menuAriaLabel="Toggle navigation"
-                menuBg={"#ffffff"}
-                menuContentColor={"#000000"}
-                useFixedPosition={false}
-              />
-            </div>
+            <Sidebar/>
             <main className="flex-grow">
               <Suspense fallback={null}>{children}</Suspense>
             </main>

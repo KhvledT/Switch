@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Moon, Sun, Languages } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import BubbleMenu from "./reactBits/BubbleMenu";
+import StaggeredMenu from "./reactBits/StaggeredMenu";
 
 
 export default function Navbar() {
@@ -17,16 +17,21 @@ export default function Navbar() {
   useEffect(() => setMounted(true), []);
 
 
+
+
   return (
     <nav className="fixed top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 relative">
-        {/* Logo - لو عايز تشيله ازيله */}
+
         <Link href="/" className="text-2xl font-bold tracking-tighter">
           SWITCH
         </Link>
 
         {/* Actions */}
         <div className="flex items-center gap-2 h-16">
+          
+            
+
           {/* Language */}
           <Button
             variant="ghost"
