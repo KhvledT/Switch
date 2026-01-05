@@ -3,48 +3,57 @@ import { useState } from "react";
 import { Globe, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useI18n } from "./i18n-context";
+import { useI18n } from "../../i18n-context";
+import { motion } from 'framer-motion';
 
+interface DomainSectionProps {
+  revealUp: any;
+}
 
-export default function domainSection() {
-    const [domain, setDomain] = useState("");
-    const [result, setResult] = useState<any>(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
-    const { t } = useI18n();
+export default function DomainSection({revealUp}: DomainSectionProps) {
+  const [domain, setDomain] = useState("");
+  const [result, setResult] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { t } = useI18n();
 
-
-    const handleSearch = async () => {
+  const handleSearch = async () => {
     if (!domain) return;
-
     setLoading(true);
     setError("");
     setResult(null);
-    if (!domain.includes('.')) {
-        setError("Invalid domain format please include a TLD (e.g., .com)");
-        setLoading(false);
-        return;
+    if (!domain.includes(".")) {
+      setError("Invalid domain format please include a TLD (e.g., .com)");
+      setLoading(false);
+      return;
     }
 
     try {
-        const res = await fetch(`/api/domain-check?domain=${domain}`);
-        
-        const data = await res.json();
+      const res = await fetch(`/api/domain-check?domain=${domain}`);
 
-        if (!res.ok) {
+      const data = await res.json();
+
+      if (!res.ok) {
         throw new Error(data.error || "Request failed");
-        }
+      }
 
-        setResult(data);
+      setResult(data);
     } catch (err: any) {
-        setError(err.message);
+      setError(err.message);
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
-    };
+  };
 
   return (
-      <section className="border-y bg-muted/30 py-24">
+    <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        variants={revealUp}
+        transition={{ duration: 0.7 }}
+      >
+        <section className="border-y bg-muted/30 py-24">
         {/* Domain Search Section */}
         <div className="container mx-auto px-4 text-center">
             <div className="mx-auto max-w-2xl rounded-none border bg-background p-8 shadow-2xl md:p-12">
@@ -75,9 +84,7 @@ export default function domainSection() {
             </div>
 
             {/* Errors */}
-            {error && (
-                <p className="mt-4 text-sm text-red-500">{error}</p>
-            )}
+            {error && <p className="mt-4 text-sm text-red-500">{error}</p>}
 
             {/* Results */}
             {result && (
@@ -108,6 +115,7 @@ export default function domainSection() {
             </div>
         </div>
         </section>
-
-  )
+    
+      </motion.div>
+  );
 }
