@@ -33,7 +33,7 @@ export default function HomeHero({revealUp, staggerContainer}: HomeHeroProps) {
           />
         </div>
 
-        <div className="absolute inset-0 bg-black pointer-events-none" />
+        <div className="absolute inset-0  pointer-events-none" />
 
         <div className="container relative z-10 mx-auto max-w-4xl text-center">
           <motion.h1
