@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import GlareHover from "@/components/reactBits/GlareHover";
 interface FeaturedOffersSectionProps {
   titleVariant: any;
     revealUp: any;
@@ -46,12 +47,17 @@ export default function FeaturedOffersSection({plans, titleVariant, revealUp, co
             {...sectionMotionProps}
           >
             {plans?.map((plan, i) => (
-              <motion.div
+              <GlareHover
                 key={plan.title + i}
-                className={`relative flex flex-col border p-8 transition-colors ${plan.popular ? "bg-muted/10 border-foreground/50 shadow-xl" : "bg-background"}`}
+                glareOpacity={0.4}
+                transitionDuration={950}
+                className={`relative flex flex-col border transition-colors ${plan.popular ? "bg-muted/10 border-foreground/50 shadow-xl" : "bg-background"}`}
+              >
+                <motion.div
                 variants={reduceMotion ? {} : planCard}
                 whileHover={reduceMotion ? undefined : "hover"}
                 aria-label={`${plan.title} plan`}
+                className="relative flex flex-col p-8 h-full"
               >
                 {plan.popular && (
                   <motion.div variants={badge} initial="hidden" animate="visible" className="absolute -top-3 left-8 bg-foreground text-background px-3 py-1 text-[10px] font-black uppercase tracking-widest">
@@ -93,6 +99,7 @@ export default function FeaturedOffersSection({plans, titleVariant, revealUp, co
                   </Link>
                 </motion.div>
               </motion.div>
+              </GlareHover>
             ))}
           </motion.div>
         </div>

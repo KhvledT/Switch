@@ -44,12 +44,12 @@ export default function sidebar() {
         items={menuItems}
         socialItems={socialItems}
         displaySocials={true}
-        displayItemNumbering={true}
+        displayItemNumbering={false}
         menuButtonColor="#fff"
         openMenuButtonColor="#fff"
         changeMenuColorOnOpen={true}
         colors={["#252526", "#636169"]}
-        logoUrl="/path-to-your-logo.svg"
+        logoUrl=""
         accentColor="#ff6b6b"
       />}
     </div>

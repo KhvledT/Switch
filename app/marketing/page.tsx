@@ -37,8 +37,6 @@ const planCard: Variants = {
     transition: { ...medTrans },
   },
   hover: {
-    y: -8,
-    scale: 1.02,
     boxShadow: "0px 18px 40px rgba(10,10,10,0.12)",
     transition: { ...shortTrans },
   },
