@@ -70,11 +70,11 @@ export default function HomePage() {
       {/* ================= Hero Section ================= */}
       <HomeHero revealUp={revealUp} staggerContainer={staggerContainer} />
 
-      {/* ================= Domain Search (wrapped for reveal) ================= */}
-      <DomainSection revealUp={revealUp} />
-
       {/* ================= About ================= */}
       <AboutSection revealLeft={revealLeft} revealRight={revealRight} />
+
+      {/* ================= Domain Search (wrapped for reveal) ================= */}
+      <DomainSection revealUp={revealUp} />
 
       {/* ================= Services ================= */}
       <ServicesSection services={services} revealUp={revealUp} staggerContainer={staggerContainer} />
